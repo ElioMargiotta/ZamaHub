@@ -18,7 +18,8 @@ import {
   LogOut,
   Wallet,
   TrendingUp,
-  Clock
+  Clock,
+  ShieldCheck
 } from 'lucide-react';
 
 const menuItems = [
@@ -35,6 +36,13 @@ const menuItems = [
     label: 'Portfolio',
     description: 'View your positions',
     comingSoon: true
+  },
+  {
+    href: '/app/kyc-register',
+    icon: ShieldCheck,
+    label: 'KYC Register',
+    description: 'Verify your identity',
+    comingSoon: false
   },
   {
     href: '/app/funding-comparison',

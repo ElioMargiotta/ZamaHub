@@ -12,7 +12,8 @@ import {
   Settings,
   Wallet,
   Clock,
-  Gamepad2
+  Gamepad2,
+  Shield
 } from 'lucide-react';
 
 const bottomNavItems = [
@@ -27,6 +28,13 @@ const bottomNavItems = [
     href: '/app/zama-game',
     icon: Gamepad2,
     label: 'Zama Game',
+    exactMatch: false,
+    comingSoon: false,
+  },
+  {
+    href: '/app/kyc-register',
+    icon: Shield,
+    label: 'KYC',
     exactMatch: false,
     comingSoon: false,
   },

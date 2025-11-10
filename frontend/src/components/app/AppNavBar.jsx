@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { OnchainWallet } from '@/components/wallet/OnchainWallet';
-import { LayoutDashboard, Gamepad2, Sparkles } from 'lucide-react';
+import { LayoutDashboard, Gamepad2, Sparkles, Shield } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 export function AppNavBar() {
@@ -39,6 +39,16 @@ export function AppNavBar() {
               <a href="/app/zama-game" className="flex items-center gap-2">
                 <Gamepad2 className="h-4 w-4" />
                 Zama Game
+              </a>
+            </Button>
+            <Button 
+              variant={pathname.startsWith('/app/kyc-register') ? 'default' : 'ghost'} 
+              size="sm"
+              asChild
+            >
+              <a href="/app/kyc-register" className="flex items-center gap-2">
+                <Shield className="h-4 w-4" />
+                KYC Register
               </a>
             </Button>
           </div>
