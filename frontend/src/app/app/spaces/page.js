@@ -1,9 +1,8 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { UserDashboard } from '@/components/dashboard/UserDashboard';
+import { SpaceBrowser } from '@/components/dashboard/SpaceBrowser';
 
-// Dashboard overview page - functional space management interface
-export default function DashboardPage() {
+export default function SpacesPage() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -13,7 +12,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
-        <UserDashboard />
+        <SpaceBrowser />
       </div>
     </div>
   );

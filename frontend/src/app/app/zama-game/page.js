@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useTheme } from 'next-themes';
 import { Vote, DollarSign, Trophy, Shield, Clock, TrendingUp, Award, List, Calendar, CheckCircle, XCircle, ExternalLink, AlertTriangle } from "lucide-react";
 import VotingFactoryABI from "./contracts/VotingFactory.sol/VotingFactory.json";
 import PrivateVotingABI from "./contracts/zamahub.sol/PrivateVoting.json";
@@ -116,16 +115,12 @@ export default function ZamaMindGamesPage() {
   const wheelPoolAddress = "0xd2F31a7F36f74ae697f790d01B45DBc4a9Ade429";
   const protocolTreasuryAddress = "0xF92c6d8F1cba15eE6c737a7E5c121ad5b6b78982";
 
-  // Theme and mouse tracking for Hero-style animations
-  const { theme, systemTheme } = useTheme();
+  // Mouse tracking for Hero-style animations
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const currentTheme = theme === 'system' ? systemTheme : theme;
-  const isLight = mounted && currentTheme === 'light';
 
   // === Initialize the Zama SDK ===
   useEffect(() => {

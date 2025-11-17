@@ -1,103 +1,47 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  darkMode: ['class'],
-  // Enable compatibility with Tailwind v4 PostCSS plugin
-  future: {
-    hoverOnlyWhenSupported: true,
-  },
+const config = {
   theme: {
     extend: {
+      colors: {
+        'zama-blue': 'var(--primary)',
+        'zama-white': 'var(--background)',
+        'zama': {
+          50: 'var(--background)',   // Very light blue
+          100: 'var(--secondary)',  // Light blue
+          200: 'var(--muted)',  // Lighter blue
+          300: 'var(--muted)',  // Light medium blue
+          400: 'var(--accent)',  // Medium blue
+          500: 'var(--primary)',  // Main Zama blue
+          600: 'var(--primary)',  // Darker blue
+          700: 'var(--primary)',  // Dark blue
+          800: 'var(--foreground)',  // Very dark blue
+          900: 'var(--foreground)',  // Darkest blue
+        },
+        'surface': {
+          50: 'var(--background)',   // Zama white
+          100: 'var(--card)',  // Pure white
+          200: 'var(--secondary)',  // Very light gray
+          300: 'var(--muted)',  // Light gray
+          400: 'var(--border)',  // Medium gray
+        },
+      },
       fontFamily: {
-        'inter': ['var(--font-inter)'],
-        'jetbrains-mono': ['var(--font-jetbrains-mono)'],
-        'dm-sans': ['var(--font-dm-sans)'],
-        'avenir-next': ['Avenir Next', 'Avenir', '-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Helvetica Neue', 'sans-serif'],
+        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       spacing: {
-        '1': '0.25rem',  /* 4px */
-        '2': '0.5rem',   /* 8px */
-        '3': '0.75rem',  /* 12px */
-        '4': '1rem',     /* 16px */
-        '5': '1.25rem',  /* 20px */
-        '6': '1.5rem',   /* 24px */
-        '8': '2rem',     /* 32px */
-        '10': '2.5rem',  /* 40px */
-        '12': '3rem',    /* 48px */
-        'touch-target': '2.75rem', /* 44px - Base Mini App guideline */
-      },
-      colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        card: {
-          DEFAULT: 'var(--card)',
-          foreground: 'var(--card-foreground)',
-        },
-        popover: {
-          DEFAULT: 'var(--popover)',
-          foreground: 'var(--popover-foreground)',
-        },
-        primary: {
-          DEFAULT: 'var(--primary)',
-          foreground: 'var(--primary-foreground)',
-        },
-        secondary: {
-          DEFAULT: 'var(--secondary)',
-          foreground: 'var(--secondary-foreground)',
-        },
-        muted: {
-          DEFAULT: 'var(--muted)',
-          foreground: 'var(--muted-foreground)',
-        },
-        accent: {
-          DEFAULT: 'var(--accent)',
-          foreground: 'var(--accent-foreground)',
-        },
-        destructive: {
-          DEFAULT: 'var(--destructive)',
-          foreground: 'var(--destructive-foreground)',
-        },
-        border: 'var(--border)',
-        input: 'var(--input)',
-        ring: 'var(--ring)',
-        chart: {
-          '1': 'var(--chart-1)',
-          '2': 'var(--chart-2)',
-          '3': 'var(--chart-3)',
-          '4': 'var(--chart-4)',
-          '5': 'var(--chart-5)',
-        },
-        sidebar: {
-          DEFAULT: 'var(--sidebar)',
-          foreground: 'var(--sidebar-foreground)',
-          primary: 'var(--sidebar-primary)',
-          'primary-foreground': 'var(--sidebar-primary-foreground)',
-          accent: 'var(--sidebar-accent)',
-          'accent-foreground': 'var(--sidebar-accent-foreground)',
-          border: 'var(--sidebar-border)',
-          ring: 'var(--sidebar-ring)',
-        },
+        '18': '4.5rem',
+        '88': '22rem',
       },
       borderRadius: {
-        sm: 'calc(var(--radius) - 4px)',
-        md: 'calc(var(--radius) - 2px)',
-        lg: 'var(--radius)',
-        xl: 'calc(var(--radius) + 4px)',
+        'xl': '0.75rem',
+        '2xl': '1rem',
       },
-      keyframes: {
-        shimmer: {
-          '0%': { backgroundPosition: '-200px 0' },
-          '100%': { backgroundPosition: 'calc(200px + 100%) 0' },
-        },
-      },
-      animation: {
-        shimmer: 'shimmer 1.5s ease-in-out infinite',
+      boxShadow: {
+        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+        'medium': '0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        'large': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
       },
     },
   },
-  plugins: [],
-};
+}; // v4 is CSS-first; keep config minimal to avoid conflicts
+export default config;

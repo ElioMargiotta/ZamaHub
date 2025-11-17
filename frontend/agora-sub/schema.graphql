@@ -1,0 +1,84 @@
+type AdminAdded @entity(immutable: true) {
+  id: Bytes!
+  spaceId: Bytes! # bytes32
+  admin: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AdminRemoved @entity(immutable: true) {
+  id: Bytes!
+  spaceId: Bytes! # bytes32
+  admin: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MemberJoined @entity(immutable: true) {
+  id: Bytes!
+  spaceId: Bytes! # bytes32
+  member: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MemberLeft @entity(immutable: true) {
+  id: Bytes!
+  spaceId: Bytes! # bytes32
+  member: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SpaceCreated @entity(immutable: true) {
+  id: Bytes!
+  spaceId: Bytes! # bytes32
+  ensName: String! # string
+  displayName: String! # string
+  owner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SpaceDeactivated @entity(immutable: true) {
+  id: Bytes!
+  spaceId: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SpaceDisplayNameUpdated @entity(immutable: true) {
+  id: Bytes!
+  spaceId: Bytes! # bytes32
+  newDisplayName: String! # string
+  updatedBy: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SpaceTransferred @entity(immutable: true) {
+  id: Bytes!
+  spaceId: Bytes! # bytes32
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WhitelistUpdated @entity(immutable: true) {
+  id: Bytes!
+  spaceId: Bytes! # bytes32
+  user: Bytes! # address
+  status: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
