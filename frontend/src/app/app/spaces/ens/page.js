@@ -140,7 +140,7 @@ export default function ENSRegistrationPage() {
 
   if (!mounted || !isConnected) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gradient-to-br from-white via-[#E8DCC4]/20 to-white">
         <div className="container mx-auto px-4 py-8">
           <Alert>
             <AlertCircle className="h-4 w-4" />
@@ -154,20 +154,20 @@ export default function ENSRegistrationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-white via-[#E8DCC4]/20 to-white">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
-            <Globe className="h-8 w-8 text-blue-600" />
+            <Globe className="h-8 w-8 text-[#4D89B0]" />
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Register ENS Name</h1>
-              <p className="text-gray-600 mt-1">
+              <h1 className="text-3xl font-bold text-black">Register ENS Name</h1>
+              <p className="text-black mt-1">
                 Register a .eth domain name for your governance spaces
               </p>
             </div>
           </div>
 
-          <Card>
+          <Card className="bg-white/80 border-[#E8DCC4]/30">
             <CardHeader>
               <CardTitle>ENS Registration</CardTitle>
               <CardDescription>
@@ -190,13 +190,14 @@ export default function ENSRegistrationPage() {
                         setIsAvailable(null); // Reset availability check
                         setErrors({ ...errors, ensName: undefined });
                       }}
-                      className="flex-1"
+                      className="flex-1 bg-white/50 border-[#E8DCC4]/30"
                     />
                     <Button
                       type="button"
                       variant="outline"
                       onClick={checkAvailability}
                       disabled={!ensName.trim() || checkingAvailability}
+                      className="border-[#4D89B0] text-black hover:bg-[#4D89B0] hover:text-white"
                     >
                       {checkingAvailability ? (
                         <Loader2 className="h-4 w-4 animate-spin" />
@@ -216,9 +217,9 @@ export default function ENSRegistrationPage() {
                   )}
                 </div>
 
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-blue-900 mb-2">What happens next?</h4>
-                  <ul className="text-sm text-blue-800 space-y-1">
+                <div className="bg-[#E8DCC4]/20 p-4 rounded-lg border border-[#E8DCC4]/30">
+                  <h4 className="font-medium text-black mb-2">What happens next?</h4>
+                  <ul className="text-sm text-black space-y-1">
                     <li>• Your ENS name will be registered to your wallet address</li>
                     <li>• You can use this name to create governance spaces</li>
                     <li>• Registration is free on the Sepolia testnet</li>
@@ -244,7 +245,7 @@ export default function ENSRegistrationPage() {
 
                 <Button
                   type="submit"
-                  className="w-full"
+                  className="w-full bg-[#4D89B0] hover:bg-[#4D89B0]/90 text-white"
                   disabled={!mounted || isPending || isConfirming || isAvailable === false || !ensName.trim()}
                 >
                   {isPending ? (
@@ -267,9 +268,9 @@ export default function ENSRegistrationPage() {
               </form>
 
               {hash && (
-                <div className="mt-4 p-3 bg-gray-100 rounded-lg">
-                  <p className="text-sm font-medium text-gray-700">Transaction Hash:</p>
-                  <p className="text-xs font-mono text-gray-600 break-all">{hash}</p>
+                <div className="mt-4 p-3 bg-[#E8DCC4]/10 rounded-lg border border-[#E8DCC4]/30">
+                  <p className="text-sm font-medium text-black">Transaction Hash:</p>
+                  <p className="text-xs font-mono text-black break-all">{hash}</p>
                 </div>
               )}
             </CardContent>
