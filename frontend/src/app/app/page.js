@@ -11,7 +11,7 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-white via-[#E8DCC4]/20 to-white">
       <div className="container mx-auto px-4 py-8">
         <UserDashboard />
       </div>
