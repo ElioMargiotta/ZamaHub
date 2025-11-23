@@ -1,18 +1,18 @@
-# ZamaHub
+# AGORA
 
-A comprehensive platform showcasing Zama's Fully Homomorphic Encryption (FHE) innovations, featuring privacy-preserving blockchain applications and decentralized gaming.
+A privacy-preserving governance platform using Zama's Fully Homomorphic Encryption (FHE) for anonymous voting in decentralized spaces.
 
 ## 🌟 Overview
 
-ZamaHub is the ultimate platform to explore and test Zama's cutting-edge Fully Homomorphic Encryption (FHE) technology. Experience computation on encrypted data without decryption - enabling truly private, secure, and decentralized applications.
+ZamaHub is the ultimate platform to explore and test Zama's cutting-edge Fully Homomorphic Encryption (FHE) technology. Experience computation on encrypted data without decryption - enabling truly private, secure, and decentralized governance applications.
 
 ### Key Features
 
 - **🔐 Fully Homomorphic Encryption**: Perform computations on encrypted data without ever decrypting it
-- **🗳️ Privacy-Preserving Voting**: Cast anonymous votes while maintaining verifiability
-- **🎮 Decentralized Gaming**: Play blockchain games with complete privacy protection
-- **⚙️ Chainlink Automation**: Seamless, trustless automated processes
-- **🎯 Zama Game**: Our flagship implementation showcasing FHE in competitive mind games
+- **🗳️ Privacy-Preserving Voting**: Cast anonymous votes in governance spaces while maintaining verifiability
+- **🏛️ Decentralized Spaces**: Create and manage governance spaces (DAOs) with member controls
+- **📝 Private Proposals**: Submit and vote on proposals with complete privacy
+- **⚙️ Chainlink Automation**: Seamless, trustless automated processes for proposal resolution
 
 ## 🚀 Quick Start
 
@@ -49,6 +49,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 - **Frontend**: Next.js 15, React 19, Tailwind CSS
 - **Blockchain**: Ethereum, Solidity smart contracts
+- **Indexing**: The Graph protocol for subgraph queries
 - **Deployment**: Hardhat development environment
 - **Encryption**: Zama FHE (@zama-fhe/relayer-sdk)
 - **Wallet**: RainbowKit, Wagmi, Coinbase OnchainKit
@@ -66,39 +67,56 @@ frontend/
 │   │   └── app/
 │   │       ├── layout.js           # App layout
 │   │       ├── page.js             # App dashboard
-│   │       └── zama-game/          # Main game interface
-│   │           ├── page.js         # Game page
-│   │           └── contracts/      # Smart contracts
+│   │       ├── spaces/
+│   │       │   └── create/
+│   │       │       └── page.js     # Create new space
+│   │       └── [space_name]/
+│   │           ├── page.js         # Space dashboard
+│   │           └── [proposal_id]/
+│   │               └── page.js     # Proposal voting page
 │   ├── components/
-│   │   ├── landing/                # Landing page    components
+│   │   ├── landing/                # Landing page components
 │   │   ├── ui/                     # Reusable UI components
 │   │   ├── wallet/                 # Wallet connection components
+│   │   ├── dashboard/              # Dashboard components
 │   │   └── providers.jsx           # App providers
-│   └── lib/
-│       ├── wagmi.js                # Web3 configuration
-│       └── utils.js                # Utility functions
+│   ├── lib/
+│   │   ├── wagmi.js                # Web3 configuration
+│   │   ├── apollo.ts               # GraphQL client
+│   │   ├── fhevm.ts                # FHE utilities
+│   │   └── utils.js                # Utility functions
+│   ├── hooks/
+│   │   └── useSubgraph.js          # Subgraph hooks
+│   └── styles/
 ├── public/                         # Static assets
 └── package.json                    # Dependencies
 ```
 
-## 🎮 Zama Game
+## 🏛️ Private Governance
 
-The flagship feature of ZamaHub is the **Zama Game** - a competitive, privacy-preserving voting system that demonstrates the power of FHE in blockchain gaming.
+The flagship feature of ZamaHub is **Private Governance** - a privacy-preserving proposal and voting system that demonstrates the power of FHE in decentralized governance.
 
 ### How It Works
 
-1. **Create a Voting**: Set up a new voting round with custom options and parameters
-2. **Deposit & Vote**: Participants deposit tokens and cast encrypted votes
-3. **Automated Resolution**: Chainlink automation handles vote counting and winner determination
-4. **Privacy Guaranteed**: All votes remain encrypted throughout the process
+1. **Create a Space**: Set up a new governance space with custom settings and member controls
+2. **Submit Proposals**: Members propose ideas and initiatives within the space
+3. **Vote Anonymously**: Participants cast encrypted votes with voting power based on eligibility tokens
+4. **Automated Resolution**: Chainlink automation handles vote tallying and proposal execution
+5. **Privacy Guaranteed**: All votes remain encrypted throughout the process
 
 ### Smart Contracts
 
-The game utilizes several Solidity smart contracts deployed with Hardhat:
-- `VotingFactory.sol`: Creates new voting instances
-- `PrivateVoting.sol`: Handles encrypted voting logic
-- `MockUSDC.sol`: ERC-20 token for deposits
-- `WheelPool.sol`: Prize distribution mechanism
+The governance system utilizes several Solidity smart contracts deployed with Hardhat:
+- `SpaceRegistry.sol`: Manages space creation and registration
+- `PrivateProposalFactory.sol`: Creates new private proposal instances
+- `PrivateProposal.sol`: Handles encrypted proposal voting logic
+- `MockGouvernanceToken.sol`: ERC-20 token for voting eligibility
+
+### Subgraphs
+
+The platform uses The Graph protocol for efficient on-chain data indexing:
+- `agora-sub/`: Subgraph for Agora-related events
+- `subgraph/`: Main subgraph for spaces, proposals, and voting events
 
 ## 🔧 Development
 
@@ -124,7 +142,7 @@ For local development, ensure you have:
 
 ```bash
 # Run all tests
-npm dev run
+npm run test
 
 # Run tests in watch mode
 npm run test -- --watch
@@ -140,7 +158,7 @@ npm run test -- --coverage
 - [Zama FHE Documentation](https://docs.zama.ai/)
 - [Wagmi Documentation](https://wagmi.sh/)
 - [Chainlink Documentation](https://docs.chain.link/)
-- [Base Documentation](https://docs.base.org/)
+- [The Graph Documentation](https://thegraph.com/docs/)
 
 ## 🤝 Contributing
 
@@ -158,8 +176,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [Zama](https://zama.ai/) for the FHE technology
 - [Chainlink](https://chainlink.com/) for automation infrastructure
-- [Coinbase](https://coinbase.com/) for OnchainKit
+- [The Graph](https://thegraph.com/) for decentralized indexing
 - [Vercel](https://vercel.com/) for hosting platform
+- [chriswilder](https://github.com/0xchriswilder) for the fhevm.ts file
 
 ---
 
