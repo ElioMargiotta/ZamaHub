@@ -1,0 +1,40 @@
+type ProposalCancelled @entity(immutable: true) {
+  id: Bytes!
+  proposalAddress: Bytes! # address
+  name: String! # string
+  cancelledBy: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProposalCreated @entity(immutable: true) {
+  id: Bytes!
+  spaceId: Bytes! # bytes32
+  proposalId: Bytes! # bytes32
+  proposal: Bytes! # address
+  p_spaceId: Bytes! # bytes32
+  p_start: BigInt! # uint64
+  p_end: BigInt! # uint64
+  p_eligibilityToken: Bytes! # address
+  p_eligibilityThreshold: BigInt! # uint256
+  p_passingThreshold: BigInt! # uint256
+  p_pType: Int! # uint8
+  p_eligibilityType: Int! # uint8
+  p_includeAbstain: Boolean! # bool
+  p_title: String! # string
+  p_bodyURI: String! # string
+  p_choices: [String!]! # string[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UpkeepPerformed @entity(immutable: true) {
+  id: Bytes!
+  votingAddress: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "PrivateProposalFactory": {
+      "address": "0x6f27646A29501Ee4aF0e4b6ABC2B28c71F723A1A",
+      "startBlock": 9706823
+    }
+  }
+}

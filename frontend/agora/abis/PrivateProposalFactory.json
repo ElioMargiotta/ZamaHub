@@ -1,0 +1,275 @@
+[
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_spaceRegistry", "type": "address" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  { "inputs": [], "name": "AlreadyCancelled", "type": "error" },
+  { "inputs": [], "name": "EmptyName", "type": "error" },
+  { "inputs": [], "name": "InvalidProposalType", "type": "error" },
+  { "inputs": [], "name": "InvalidThreshold", "type": "error" },
+  { "inputs": [], "name": "NameTooLong", "type": "error" },
+  { "inputs": [], "name": "NotAuthorized", "type": "error" },
+  { "inputs": [], "name": "NotSpaceOwner", "type": "error" },
+  { "inputs": [], "name": "OnlyOwner", "type": "error" },
+  { "inputs": [], "name": "SnapshotInFuture", "type": "error" },
+  { "inputs": [], "name": "SpaceNotExist", "type": "error" },
+  { "inputs": [], "name": "StartPast", "type": "error" },
+  { "inputs": [], "name": "Started", "type": "error" },
+  { "inputs": [], "name": "ZeroAddr", "type": "error" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "proposalAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "cancelledBy",
+        "type": "address"
+      }
+    ],
+    "name": "ProposalCancelled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "spaceId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "proposalId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "proposal",
+        "type": "address"
+      },
+      {
+        "components": [
+          { "internalType": "bytes32", "name": "spaceId", "type": "bytes32" },
+          { "internalType": "uint64", "name": "start", "type": "uint64" },
+          { "internalType": "uint64", "name": "end", "type": "uint64" },
+          {
+            "internalType": "address",
+            "name": "eligibilityToken",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "eligibilityThreshold",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "passingThreshold",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum ProposalType",
+            "name": "pType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum EligibilityType",
+            "name": "eligibilityType",
+            "type": "uint8"
+          },
+          { "internalType": "bool", "name": "includeAbstain", "type": "bool" },
+          { "internalType": "string", "name": "title", "type": "string" },
+          { "internalType": "string", "name": "bodyURI", "type": "string" },
+          { "internalType": "string[]", "name": "choices", "type": "string[]" }
+        ],
+        "indexed": false,
+        "internalType": "struct CreateProposalParams",
+        "name": "p",
+        "type": "tuple"
+      }
+    ],
+    "name": "ProposalCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "votingAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "UpkeepPerformed",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "proposalAddress",
+        "type": "address"
+      }
+    ],
+    "name": "cancelProposal",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "bytes", "name": "", "type": "bytes" }],
+    "name": "checkUpkeep",
+    "outputs": [
+      { "internalType": "bool", "name": "upkeepNeeded", "type": "bool" },
+      { "internalType": "bytes", "name": "performData", "type": "bytes" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          { "internalType": "bytes32", "name": "spaceId", "type": "bytes32" },
+          { "internalType": "uint64", "name": "start", "type": "uint64" },
+          { "internalType": "uint64", "name": "end", "type": "uint64" },
+          {
+            "internalType": "address",
+            "name": "eligibilityToken",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "eligibilityThreshold",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "passingThreshold",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum ProposalType",
+            "name": "pType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum EligibilityType",
+            "name": "eligibilityType",
+            "type": "uint8"
+          },
+          { "internalType": "bool", "name": "includeAbstain", "type": "bool" },
+          { "internalType": "string", "name": "title", "type": "string" },
+          { "internalType": "string", "name": "bodyURI", "type": "string" },
+          { "internalType": "string[]", "name": "choices", "type": "string[]" }
+        ],
+        "internalType": "struct CreateProposalParams",
+        "name": "params",
+        "type": "tuple"
+      }
+    ],
+    "name": "createProposal",
+    "outputs": [
+      { "internalType": "address", "name": "proposal", "type": "address" },
+      { "internalType": "bytes32", "name": "proposalId", "type": "bytes32" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "currentBucketIndex",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "proposal", "type": "address" }
+    ],
+    "name": "isCancelled",
+    "outputs": [
+      { "internalType": "bool", "name": "cancelled", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes", "name": "performData", "type": "bytes" }
+    ],
+    "name": "performUpkeep",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "spaceId", "type": "bytes32" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "spaceProposals",
+    "outputs": [
+      { "internalType": "address", "name": "proposals", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "spaceRegistry",
+    "outputs": [
+      {
+        "internalType": "contract SpaceRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "bucket", "type": "uint256" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "timeBucketedProposals",
+    "outputs": [
+      { "internalType": "address", "name": "proposals", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
